@@ -1,7 +1,7 @@
 {
   "name": "create-elms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Creates HTML elements using strings or objects, optionally inserts into DOM, and returns array of elements (default) or HTML markup. Works in browser and Node environments. Small (<1kb min+gzip) and dependency-free.",
   "author": "John Hildenbiddle <http://hildenbiddle.com>",
   "license": "MIT",
   "homepage": "https://github.com/jhildenbiddle/create-elms",
@@ -17,13 +17,13 @@
     "create",
     "dom",
     "element",
+    "elms",
     "html",
     "insert",
     "javascript",
     "js",
     "jsdom",
     "module",
-    "node",
     "node",
     "prepend"
   ],
