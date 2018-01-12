@@ -138,7 +138,7 @@ function createElms(elmData, sharedOptions = {}) {
             else if (settings.prependTo) {
                 getElms(settings.prependTo).forEach((toElm, i, arr) => {
                     const addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
-                    elmArray.push(toElm.prepend(addElm));
+                    elmArray.push(toElm.insertBefore(addElm, toElm.firstChild));
                 });
             }
             else if (settings.insertBefore) {

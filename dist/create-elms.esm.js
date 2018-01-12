@@ -52,7 +52,7 @@ function createElms(e) {
                 r.push(t.appendChild(a));
             }) : c.prependTo ? n(c.prependTo).forEach(function(t, n, o) {
                 var a = o.length > 1 ? e.cloneNode(!0) : e;
-                r.push(t.prepend(a));
+                r.push(t.insertBefore(a, t.firstChild));
             }) : c.insertBefore ? n(c.insertBefore).forEach(function(t, n, o) {
                 var a = o.length > 1 ? e.cloneNode(!0) : e;
                 r.push(t.parentNode.insertBefore(a, t));

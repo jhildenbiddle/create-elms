@@ -22,44 +22,44 @@
     };
     return function(n) {
         var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, o = [];
-        function c(e) {
+        function f(e) {
             var n = Array.isArray(e) ? e : "string" == typeof e ? [].concat(t(document.querySelectorAll(e))) : e.length ? [].concat(t(e)) : [ e ];
             return [].concat(t(n)).filter(function(e) {
                 return e;
             });
         }
         return (Array.isArray(n) ? n : [ n ]).forEach(function(n) {
-            var f = document.createElement("div"), i = n && "string" == typeof n, u = i ? r : function t() {
+            var i = document.createElement("div"), c = n && "string" == typeof n, u = c ? r : function t() {
                 for (var n = function(t) {
                     return t && "object" === (void 0 === t ? "undefined" : e(t));
-                }, r = arguments.length, o = Array(r), c = 0; c < r; c++) o[c] = arguments[c];
+                }, r = arguments.length, o = Array(r), f = 0; f < r; f++) o[f] = arguments[f];
                 return o.reduce(function(e, r) {
                     return Object.keys(r).forEach(function(o) {
-                        var c = e[o], f = r[o];
-                        n(c) && n(f) ? e[o] = t(c, f) : e[o] = f;
+                        var f = e[o], i = r[o];
+                        n(f) && n(i) ? e[o] = t(f, i) : e[o] = i;
                     }), e;
                 }, {});
             }(r, n);
-            if (i) f.innerHTML = n; else if (u.tag) {
+            if (c) i.innerHTML = n; else if (u.tag) {
                 var a = document.createElement(u.tag);
-                f.appendChild(a);
+                i.appendChild(a);
             }
-            [].concat(t(f.children)).forEach(function(e) {
+            [].concat(t(i.children)).forEach(function(e) {
                 !(e.textContent.length || e.children.length) && (u.html ? e.innerHTML = u.html : u.text && (e.textContent = u.text)), 
                 u.attr && Object.keys(u.attr).forEach(function(t) {
                     e.setAttribute(t, u.attr[t]);
-                }), u.appendTo ? c(u.appendTo).forEach(function(t, n, r) {
-                    var c = r.length > 1 ? e.cloneNode(!0) : e;
-                    o.push(t.appendChild(c));
-                }) : u.prependTo ? c(u.prependTo).forEach(function(t, n, r) {
-                    var c = r.length > 1 ? e.cloneNode(!0) : e;
-                    o.push(t.prepend(c));
-                }) : u.insertBefore ? c(u.insertBefore).forEach(function(t, n, r) {
-                    var c = r.length > 1 ? e.cloneNode(!0) : e;
-                    o.push(t.parentNode.insertBefore(c, t));
-                }) : u.insertAfter ? c(u.insertAfter).forEach(function(t, n, r) {
-                    var c = r.length > 1 ? e.cloneNode(!0) : e;
-                    o.push(t.parentNode.insertBefore(c, t.nextSibling));
+                }), u.appendTo ? f(u.appendTo).forEach(function(t, n, r) {
+                    var f = r.length > 1 ? e.cloneNode(!0) : e;
+                    o.push(t.appendChild(f));
+                }) : u.prependTo ? f(u.prependTo).forEach(function(t, n, r) {
+                    var f = r.length > 1 ? e.cloneNode(!0) : e;
+                    o.push(t.insertBefore(f, t.firstChild));
+                }) : u.insertBefore ? f(u.insertBefore).forEach(function(t, n, r) {
+                    var f = r.length > 1 ? e.cloneNode(!0) : e;
+                    o.push(t.parentNode.insertBefore(f, t));
+                }) : u.insertAfter ? f(u.insertAfter).forEach(function(t, n, r) {
+                    var f = r.length > 1 ? e.cloneNode(!0) : e;
+                    o.push(t.parentNode.insertBefore(f, t.nextSibling));
                 }) : o.push(e);
             });
         }), o;
