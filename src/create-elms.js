@@ -75,12 +75,12 @@ import mergeDeep from './merge-deep';
  * @property {object} [options.attr] - Tag attributes (key/value pairs)
  * @property {string} [options.text] - Content to append to tag as text
  * @property {string} [options.html] - Content to append to tag as HTML
- * @property {object|string} [options.appendTo] - The parent node to append element to
- * @property {object|string} [options.prependTo] - The parent node to append element to
- * @property {object|string} [options.insertBefore] - The parent node to append element to
- * @property {object|string} [options.insertAfter] - The parent node to append element to
+ * @property {object|string} [options.appendTo] - The node(s) to append element(s) to
+ * @property {object|string} [options.prependTo] - The node(s) to prepend element(s) to
+ * @property {object|string} [options.insertBefore] - The node(s) to insert element(s) before
+ * @property {object|string} [options.insertAfter] - The node(s) to insert element(s) after
  */
-function createElms(elmData, sharedOptions = {}) {
+function createElms(elmData, sharedOptions = {}, document = window.document) {
     const elmArray  = [];
     const dataArray = Array.isArray(elmData) ? elmData : [elmData];
 
@@ -159,7 +159,7 @@ function createElms(elmData, sharedOptions = {}) {
         });
     });
 
-    return elmArray;
+    return sharedOptions.returnHtml ? elmArray.map(elm => elm.outerHTML) : elmArray;
 }
 
 

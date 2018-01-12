@@ -1,7 +1,7 @@
 {
   "name": "create-elms",
   "version": "1.0.0",
-  "description": "Gets CSS data from <style> and <link> elements (including @imports), then returns data in order processed by DOM. Allows specifying nodes to include/exclude and filtering CSS data using RegEx.",
+  "description": "",
   "author": "John Hildenbiddle <http://hildenbiddle.com>",
   "license": "MIT",
   "homepage": "https://github.com/jhildenbiddle/create-elms",
@@ -37,10 +37,11 @@
     "prepare": "rimraf dist/* && npm run build",
     "build": "rollup -c",
     "start": "rimraf coverage/* dist/* && npm run build -- --watch",
-    "test": "rimraf coverage/* && karma start",
-    "test-debug": "npm run test-watch -- --browsers Chrome",
-    "test-watch": "npm test -- --auto-watch --no-single-run",
-    "test-remote": "npm test -- --remote"
+    "test": "rimraf coverage/* && npm run test-node && npm run test-browser",
+    "test-browser": "karma start",
+    "test-node": "mocha ./tests/node.test.js",
+    "test-watch": "npm run test-browser -- --auto-watch --no-single-run",
+    "test-remote": "npm run test-browser -- --remote"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -53,6 +54,7 @@
     "eslint": "^4.12.1",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-mocha": "^4.11.0",
+    "jsdom": "^11.5.1",
     "karma": "^2.0.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",

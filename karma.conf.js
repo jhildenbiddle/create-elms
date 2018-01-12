@@ -7,7 +7,7 @@ const saucelabs = require('./saucelabs.config');
 // Variables
 // =============================================================================
 const files = {
-    test: './tests/**/*.test.js'
+    test: './tests/browser.test.js'
 };
 
 
