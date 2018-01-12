@@ -1,0 +1,79 @@
+{
+  "name": "create-elms",
+  "version": "1.0.0",
+  "description": "Gets CSS data from <style> and <link> elements (including @imports), then returns data in order processed by DOM. Allows specifying nodes to include/exclude and filtering CSS data using RegEx.",
+  "author": "John Hildenbiddle <http://hildenbiddle.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jhildenbiddle/create-elms",
+  "repository": {
+    "type": "git",
+    "url": "git+https://jhildenbiddle@github.com/jhildenbiddle/create-elms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhildenbiddle/create-elms/issues"
+  },
+  "keywords": [
+    "append",
+    "create",
+    "dom",
+    "element",
+    "html",
+    "insert",
+    "javascript",
+    "js",
+    "jsdom",
+    "module",
+    "node",
+    "node",
+    "prepend"
+  ],
+  "browserslist": [
+    "ie >= 9"
+  ],
+  "main": "dist/create-elms.js",
+  "module": "dist/create-elms.esm.js",
+  "unpkg": "dist/create-elms.min.js",
+  "scripts": {
+    "prepare": "rimraf dist/* && npm run build",
+    "build": "rollup -c",
+    "start": "rimraf coverage/* dist/* && npm run build -- --watch",
+    "test": "rimraf coverage/* && karma start",
+    "test-debug": "npm run test-watch -- --browsers Chrome",
+    "test-watch": "npm test -- --auto-watch --no-single-run",
+    "test-remote": "npm test -- --remote"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.12.1",
+    "eslint-plugin-chai-expect": "^1.1.1",
+    "eslint-plugin-mocha": "^4.11.0",
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-eslint": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sauce-launcher": "^1.2.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.6",
+    "lodash.merge": "^4.6.0",
+    "mocha": "^4.0.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.53.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.3.4",
+    "webpack": "^3.10.0"
+  }
+}
