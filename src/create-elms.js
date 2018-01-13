@@ -72,9 +72,9 @@ import mergeDeep from './merge-deep';
  * @typedef createElmsOptions
  * @type {object}
  * @property {string} [options.tag] - The HTML tag
- * @property {object} [options.attr] - Tag attributes (key/value pairs)
- * @property {string} [options.text] - Content to append to tag as text
  * @property {string} [options.html] - Content to append to tag as HTML
+ * @property {string} [options.text] - Content to append to tag as text
+ * @property {object} [options.attr] - Tag attributes (key/value pairs)
  * @property {object|string} [options.appendTo] - The node(s) to append element(s) to
  * @property {object|string} [options.prependTo] - The node(s) to prepend element(s) to
  * @property {object|string} [options.insertBefore] - The node(s) to insert element(s) before
