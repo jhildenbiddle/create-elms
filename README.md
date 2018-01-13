@@ -53,34 +53,36 @@ CDN ([unpkg.com](https://unpkg.com/)):
 Render elements using strings and/or objects:
 
 ```javascript
+let elm, elms;
+
 // Create an element from a string
-let elm = createElms('<p>Foo</p>'); // => [elm]
+elm = createElms('<p>Foo</p>'); // => [elm]
 
 // ... or an object
-let elm = createElms({
+elm = createElms({
   tag : 'p',
   text: 'Foo'
 }); // => [elm]
 
 // ... or multiple elements from a string
-let elms = createElms('<p>Foo</p><p>Bar</p><p>Baz</p>'); // => [elm, elm, elm]
+elms = createElms('<p>Foo</p><p>Bar</p><p>Baz</p>'); // => [elm, elm, elm]
 
 // ... or an array of strings
-let elms = createElms([
+elms = createElms([
   '<p>Foo</p>',
   '<p>Bar</p>',
   '<p>Baz</p>'
 ]); // => [elm, elm, elm]
 
 // ... or an array of objects
-let elms = createElms([
+elms = createElms([
   { tag: 'p', text: 'Foo' },
   { tag: 'p', text: 'Bar' },
   { tag: 'p', text: 'Baz' }
 ]); // => [elm, elm, elm]
 
 // ... or an array containing strings and objects
-let elms = createElms([
+elms = createElms([
   '<p>Foo</p>',
   '<p>Bar</p>',
   { tag: 'p', text: 'Baz' }
@@ -90,13 +92,15 @@ let elms = createElms([
 Set per-element attributes or shared attributes:
 
 ```javascript
+let elm, elms;
+
 // Set attributes on specific elements...
-let elm = createElms({
-  tag: 'p', text: 'Foo', attr: { id: 'foo', class: 'myclass', style: 'color: red;' }
+elm = createElms({
+  tag: 'p', text: 'Foo', attr: { id: 'foo', class: 'myclass' }
 });
 
-// ... or use the 'sharedOptions' argument for multiple elements
-let elms = createElms(
+// ... or use the 'sharedOptions' argument for multiple elementData objects
+elms = createElms(
   // elementData
   [
     { text: 'Foo' },
@@ -108,15 +112,14 @@ let elms = createElms(
     tag : 'p',
     attr: {
       id   : 'foo',
-      class: 'myclass',
-      style: 'color: red;'
+      class: 'myclass'
     }
   }
 );
 
-// ... or to set options for elements rendered from strings
-let elms = createElms(
-  // elmData (strings)
+// ... or to apply options to one-or-more elementData strings
+elms = createElms(
+  // elementData
   [
     '<p>Foo</p>',
     '<p>Bar</p>',
@@ -125,8 +128,7 @@ let elms = createElms(
   // sharedOptions
   {
     id   : 'foo',
-    class: 'myclass',
-    style: 'color: red;'
+    class: 'myclass'
   }
 );
 ```
@@ -134,26 +136,28 @@ let elms = createElms(
 Append, prepend, or insert elements:
 
 ```javascript
+let elm, elms;
+
 // Insert into the DOM using a CSS selector...
-let elm = createElms({
+elm = createElms({
   tag     : 'p',
   appendTo: 'body'
 });
 
 // ... or an HTMLElement/Node
-let elm = createElms({
+elm = createElms({
   tag     : 'p',
   appendTo: document.querySelector('body')
 });
 
 // ... or an HTMLCollection/NodeList
-let elm = createElms({
+elm = createElms({
   tag     : 'p',
   appendTo: document.querySelectorAll('li')
 });
 
 // ... or an array of CSS selectors, HTMLElements, and/or Nodes
-let elm = createElms({
+elm = createElms({
   tag     : 'p',
   appendTo: [
     'body',
@@ -161,14 +165,35 @@ let elm = createElms({
   ]
 });
 
-// ... or any combination of append/prepend/before/after
-let elm = createElms({
+// Specify one option per element
+elm = createElms([
+  { tag: 'p', appendTo    : document.body },
+  { tag: 'p', prependTo   : 'header, footer' },
+  { tag: 'p', insertBefore: document.querySelectorAll('ul') },
+  { tag: 'p', insertAfter : document.getElementsByTagName('h1') }
+]);
+
+// ... or multiple options per element
+elm = createElms({
   tag         : 'p',
   appendTo    : document.body,
   prependTo   : 'header, footer',
   insertBefore: document.querySelectorAll('ul'),
   insertAfter : document.getElementsByTagName('h1')
 });
+
+// ... or use the 'shadedOptions' argument for elementData strings
+elm = createElms(
+  // elementData
+  ['<p>Text1</p>', '<p>Text2</p>', '<p>Text3</p>'],
+  // shadedOptions
+  {
+    appendTo    : document.body,
+    prependTo   : 'header, footer',
+    insertBefore: document.querySelectorAll('ul'),
+    insertAfter : document.getElementsByTagName('h1')
+  }
+);
 ```
 
 Have elements returned as HTMLElements or HTML markup:
@@ -317,4 +342,3 @@ let html = createElms({ tag: 'p', { returnHtml: true }, dom.window.document)
 ## License
 
 [MIT License](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
-
