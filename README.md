@@ -10,7 +10,7 @@ A small (< 1kb min+gzip), dependency-free micro-library for creating HTML elemen
 ## Features
 
 - Create elements using strings or objects
-- Append, prepend, and insert elements before or after existing elements
+- Append, prepend, and insert elements before or after other elements
 - Return an array of elements or HTML markup
 - UMD and ES6 module available
 - Compatible with modern and legacy browsers (IE9+)
