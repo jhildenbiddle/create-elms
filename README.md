@@ -138,59 +138,39 @@ Append, prepend, or insert elements:
 ```javascript
 let elm, elms;
 
-// Insert into the DOM using a CSS selector...
-elm = createElms({
-  tag     : 'p',
-  appendTo: 'body'
-});
-
-// ... or an HTMLElement/Node
-elm = createElms({
-  tag     : 'p',
-  appendTo: document.querySelector('body')
-});
-
-// ... or an HTMLCollection/NodeList
-elm = createElms({
-  tag     : 'p',
-  appendTo: document.querySelectorAll('li')
-});
+// Use CSS selectors, HTMLElement(s) or Node(s)
+elm = createElms({ tag: 'p', appendTo: 'body' });
+elm = createElms({ tag: 'p', appendTo: document.body });
+elm = createElms({ tag: 'p', appendTo: document.querySelector('body') });
+elm = createElms({ tag: 'p', appendTo: document.querySelectorAll('div') });
 
 // ... or an array of CSS selectors, HTMLElements, and/or Nodes
 elm = createElms({
   tag     : 'p',
-  appendTo: [
-    'body',
-    document.querySelectorAll('li')
-  ]
+  appendTo: ['body', document.querySelectorAll('div')]
 });
 
-// Specify one option per element
-elm = createElms([
-  { tag: 'p', appendTo    : document.body },
-  { tag: 'p', prependTo   : 'header, footer' },
-  { tag: 'p', insertBefore: document.querySelectorAll('ul') },
-  { tag: 'p', insertAfter : document.getElementsByTagName('h1') }
-]);
-
-// ... or multiple options per element
-elm = createElms({
+// Specify multiple append/prepend/insert points per element
+elms = createElms({ 
   tag         : 'p',
   appendTo    : document.body,
   prependTo   : 'header, footer',
-  insertBefore: document.querySelectorAll('ul'),
+  insertBefore: document.querySelectorAll('div'),
   insertAfter : document.getElementsByTagName('h1')
 });
 
-// ... or use the 'shadedOptions' argument for elementData strings
-elm = createElms(
+// ... or use the 'shadedOptions' argument for multiple elements
+elms = createElms(
   // elementData
-  ['<p>Text1</p>', '<p>Text2</p>', '<p>Text3</p>'],
+  [
+    '<p>Text1</p>', 
+    '<p>Text2</p>'
+  ],
   // shadedOptions
   {
     appendTo    : document.body,
     prependTo   : 'header, footer',
-    insertBefore: document.querySelectorAll('ul'),
+    insertBefore: document.querySelectorAll('div'),
     insertAfter : document.getElementsByTagName('h1')
   }
 );
@@ -200,16 +180,11 @@ Have elements returned as HTMLElements or HTML markup:
 
 ```javascript
 // Return as HTML elements (default)
-let elm = createElms(
-  { tag: 'p' },
-);
+let elm = createElms({ tag: 'p' });
 // => [elm]
 
 // Return as HTML markup
-let html = createElms(
-  { tag: 'p' },
-  { returnHtml: true }
-);
+let html = createElms({ tag: 'p' }, { returnHtml: true });
 // => '<p></p>'
 ```
 
@@ -264,16 +239,13 @@ let elm1 = createElement('<p id="foo" class="myclass"><a href="/">Home</a>');
 
 // String with multiple elements
 let elms1 = createElement('<p>Text1</p><p>Text2</p><p>Text3</p>');
-// => [elm, elm, elm]
+// => [elm, elm, elm] (all top-level elements returned)
 
 // Object
 let elm2 = createElement({
   tag : 'p',
   html: '<a href="/">Home</a>',
-  attr: {
-    id   : 'foo',
-    class: 'myclass'
-  }
+  attr: { id: 'foo', class: 'myclass' }
 });
 // => [elm]
 
