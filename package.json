@@ -41,7 +41,9 @@
     "test-browser": "karma start",
     "test-node": "mocha ./tests/node.test.js",
     "test-watch": "npm run test-browser -- --auto-watch --no-single-run",
-    "test-remote": "npm run test-browser -- --remote"
+    "test-remote": "npm run test-browser -- --remote",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
