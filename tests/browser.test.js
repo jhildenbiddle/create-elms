@@ -150,9 +150,9 @@ describe('Browser environment', function() {
         });
     });
 
-    // Tests: Insert elements
+    // Tests: Append/prepend/insert
     // -------------------------------------------------------------------------
-    describe('Inserting', function() {
+    describe('Append/prepend/insert', function() {
         const html = '<li data-test="true"></li>';
 
         let rootElm;
@@ -179,17 +179,68 @@ describe('Browser environment', function() {
 
         // Tests
         // ---------------------------------------------------------------------
-        it('Appends to element', function() {
+        it('Appends to element (String)', function() {
             const exp = `<ul><li></li><li></li>${html}</ul>`;
 
-            createElms(html, { appendTo: rootElm });
+            createElms(html, { appendTo: 'ul' });
             test(rootElm, exp);
         });
 
-        it('Appends to multiple elements', function() {
+        it('Appends to element (Node)', function() {
+            const exp = `<ul><li></li><li></li>${html}</ul>`;
+
+            createElms(html, { appendTo: document.getElementsByTagName('ul')[0] });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multiple elements (String)', function() {
             const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
 
-            createElms(html, { appendTo: rootElm.children });
+            createElms(html, { appendTo: 'li' });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multiple elements (HTMLCollection)', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: document.getElementsByTagName('li') });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multiple elements (NodeList)', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: document.querySelectorAll('li') });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multiple elements [String, String])', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: ['li:first-child', 'li:last-child'] });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multiple elements [Node, Node])', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: [firstElm, lastElm] });
+            test(rootElm, exp);
+        });
+
+        it('Appends to multipe elements [HTMLCollection])', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: document.getElementsByTagName('li') } );
+
+            test(rootElm, exp);
+        });
+
+        it('Appends to multipe elements [NodeList])', function() {
+            const exp = `<ul><li>${html}</li><li>${html}</li></ul>`;
+
+            createElms(html, { appendTo: document.querySelectorAll('li') } );
+
             test(rootElm, exp);
         });
 

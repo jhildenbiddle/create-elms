@@ -84,12 +84,33 @@ function createElms(elmData, sharedOptions = {}, document = window.document) {
     const elmArray  = [];
     const dataArray = Array.isArray(elmData) ? elmData : [elmData];
 
-    // Returns an array of elements when passed a string, NodeList,
-    // HTMLCollection, or individual element.
-    function getElms(selectorElmsOrNodes) {
-        const elms = Array.isArray(selectorElmsOrNodes) ? selectorElmsOrNodes : typeof selectorElmsOrNodes === 'string' ? [...document.querySelectorAll(selectorElmsOrNodes)] : selectorElmsOrNodes.length ? [...selectorElmsOrNodes] : [selectorElmsOrNodes];
+    // Returns a flattened array of element(s) when passed a string, Element,
+    // HTMLCollection, NodeList, or Array of aforementioned types.
+    function getElms(elms) {
+        let elmArray = [];
 
-        return [...elms].filter(elm => elm);
+        // Element
+        if (elms.nodeType) {
+            elmArray = [elms];
+        }
+        // CSS selector
+        else if (typeof elms === 'string') {
+            elmArray = [...document.querySelectorAll(elms)];
+        }
+        // Array
+        else if (Array.isArray(elms)) {
+            // Convert CSS selectors, HTMLCollections, and NodeLists to arrays
+            elmArray = elms.map(elm => getElms(elm));
+
+            // Flatten arrays
+            elmArray = Array.prototype.concat(...elmArray);
+        }
+        // HTMLCollection or NodeList
+        else if (elms.length) {
+            elmArray = [...elms];
+        }
+
+        return elmArray;
     }
 
     dataArray.forEach(data => {

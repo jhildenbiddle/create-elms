@@ -23,13 +23,17 @@
     return function(n) {
         var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, o = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : window.document, i = [];
         function f(e) {
-            var n = Array.isArray(e) ? e : "string" == typeof e ? [].concat(t(o.querySelectorAll(e))) : e.length ? [].concat(t(e)) : [ e ];
-            return [].concat(t(n)).filter(function(e) {
-                return e;
-            });
+            var n = [];
+            if (e.nodeType) n = [ e ]; else if ("string" == typeof e) n = [].concat(t(o.querySelectorAll(e))); else if (Array.isArray(e)) {
+                var r;
+                n = e.map(function(e) {
+                    return f(e);
+                }), n = (r = Array.prototype).concat.apply(r, t(n));
+            } else e.length && (n = [].concat(t(e)));
+            return n;
         }
         return (Array.isArray(n) ? n : [ n ]).forEach(function(n) {
-            var c = o.createElement("div"), u = n && "string" == typeof n, a = u ? r : function t() {
+            var c = o.createElement("div"), a = n && "string" == typeof n, u = a ? r : function t() {
                 for (var n = function(t) {
                     return t && "object" === (void 0 === t ? "undefined" : e(t));
                 }, r = arguments.length, o = Array(r), i = 0; i < r; i++) o[i] = arguments[i];
@@ -40,24 +44,24 @@
                     }), e;
                 }, {});
             }(r, n);
-            if (u) c.innerHTML = n; else if (a.tag) {
-                var l = o.createElement(a.tag);
+            if (a) c.innerHTML = n; else if (u.tag) {
+                var l = o.createElement(u.tag);
                 c.appendChild(l);
             }
             [].concat(t(c.children)).forEach(function(e) {
-                !(e.textContent.length || e.children.length) && (a.html ? e.innerHTML = a.html : a.text && (e.textContent = a.text)), 
-                a.attr && Object.keys(a.attr).forEach(function(t) {
-                    e.setAttribute(t, a.attr[t]);
-                }), a.appendTo ? f(a.appendTo).forEach(function(t, n, r) {
+                !(e.textContent.length || e.children.length) && (u.html ? e.innerHTML = u.html : u.text && (e.textContent = u.text)), 
+                u.attr && Object.keys(u.attr).forEach(function(t) {
+                    e.setAttribute(t, u.attr[t]);
+                }), u.appendTo ? f(u.appendTo).forEach(function(t, n, r) {
                     var o = r.length > 1 ? e.cloneNode(!0) : e;
                     i.push(t.appendChild(o));
-                }) : a.prependTo ? f(a.prependTo).forEach(function(t, n, r) {
+                }) : u.prependTo ? f(u.prependTo).forEach(function(t, n, r) {
                     var o = r.length > 1 ? e.cloneNode(!0) : e;
                     i.push(t.insertBefore(o, t.firstChild));
-                }) : a.insertBefore ? f(a.insertBefore).forEach(function(t, n, r) {
+                }) : u.insertBefore ? f(u.insertBefore).forEach(function(t, n, r) {
                     var o = r.length > 1 ? e.cloneNode(!0) : e;
                     i.push(t.parentNode.insertBefore(o, t));
-                }) : a.insertAfter ? f(a.insertAfter).forEach(function(t, n, r) {
+                }) : u.insertAfter ? f(u.insertAfter).forEach(function(t, n, r) {
                     var o = r.length > 1 ? e.cloneNode(!0) : e;
                     i.push(t.parentNode.insertBefore(o, t.nextSibling));
                 }) : i.push(e);
