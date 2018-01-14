@@ -5,7 +5,7 @@
 [![Codacy grade](https://img.shields.io/codacy/grade/85a81097fa574bc3b011e30d76ed02ab.svg?style=flat-square)](https://www.codacy.com/app/jhildenbiddle/create-elms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jhildenbiddle/create-elms&amp;utm_campaign=Badge_Grade)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
 
-A small (< 1kb min+gzip), dependency-free micro-library for creating HTML elements.
+A small (~1kb min+gzip), dependency-free micro-library for creating HTML elements.
 
 ## Features
 
@@ -33,7 +33,7 @@ git clone https://github.com/jhildenbiddle/create-elms.git
 CDN ([unpkg.com](https://unpkg.com/)):
 
 ```html
-<!-- ES5 (latest v1.x.x) -->
+<!-- ES5 in file.html (latest v1.x.x) -->
 <script src="https://unpkg.com/create-elms@1"></script>
 <script>
   var elms = createElms(...);
@@ -41,11 +41,17 @@ CDN ([unpkg.com](https://unpkg.com/)):
 ```
 
 ```html
-<!-- ES6 Module (latest v1.x.x) -->
+<!-- ES6 module in file.html (latest v1.x.x) -->
 <script type="module">
   import createElms from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
   const elms = createElms(...);
 </script>
+```
+
+```javascript
+// ES6 module in file.js (latest v1.x.x)
+import createElms from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
+const elms = createElms(...);
 ```
 
 ## Examples
@@ -96,24 +102,23 @@ let elm, elms;
 
 // Set attributes on specific elements...
 elm = createElms({
-  tag: 'p', text: 'Foo', attr: { id: 'foo', class: 'myclass' }
+  tag : 'p', 
+  text: 'Foo', 
+  attr: { id: 'foo', class: 'myclass' }
 });
 
 // ... or use the 'sharedOptions' argument for multiple elementData objects
 elms = createElms(
   // elementData
   [
-    { text: 'Foo' },
-    { text: 'Bar' },
-    { text: 'Baz' }
+    { text: 'Foo', attr: { id: 'foo' } },
+    { text: 'Bar', attr: { id: 'bar' } },
+    { text: 'Baz', attr: { id: 'baz' } }
   ],
   // sharedOptions
   {
     tag : 'p',
-    attr: {
-      id   : 'foo',
-      class: 'myclass'
-    }
+    attr: { class: 'myclass' }
   }
 );
 
@@ -121,13 +126,12 @@ elms = createElms(
 elms = createElms(
   // elementData
   [
-    '<p>Foo</p>',
-    '<p>Bar</p>',
-    '<p>Baz</p>'
+    '<p id="foo">Foo</p>',
+    '<p id="bar">Bar</p>',
+    '<p id="baz">Baz</p>'
   ],
   // sharedOptions
   {
-    id   : 'foo',
     class: 'myclass'
   }
 );
@@ -147,14 +151,17 @@ elm = createElms({ tag: 'p', appendTo: document.querySelectorAll('div') });
 // ... or an array of CSS selectors, HTMLElements, and/or Nodes
 elm = createElms({
   tag     : 'p',
-  appendTo: ['body', document.querySelectorAll('div')]
+  appendTo: [
+    'body', 
+    document.querySelectorAll('div')
+  ]
 });
 
 // Specify multiple append/prepend/insert points per element
 elms = createElms({ 
   tag         : 'p',
-  appendTo    : document.body,
-  prependTo   : 'header, footer',
+  appendTo    : 'body',
+  prependTo   : document.body,
   insertBefore: document.querySelectorAll('div'),
   insertAfter : document.getElementsByTagName('h1')
 });
@@ -168,8 +175,8 @@ elms = createElms(
   ],
   // shadedOptions
   {
-    appendTo    : document.body,
-    prependTo   : 'header, footer',
+    appendTo    : 'body',
+    prependTo   : document.body,
     insertBefore: document.querySelectorAll('div'),
     insertAfter : document.getElementsByTagName('h1')
   }
