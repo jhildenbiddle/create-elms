@@ -1,5 +1,6 @@
 # create-elms
 
+[![NPM](https://img.shields.io/npm/v/create-elms.svg?style=flat-square)](https://www.npmjs.com/package/create-elms)
 [![Build Status](https://img.shields.io/travis/jhildenbiddle/create-elms.svg?style=flat-square)](https://travis-ci.org/jhildenbiddle/create-elms)
 [![Codecov](https://img.shields.io/codecov/c/github/jhildenbiddle/create-elms.svg?style=flat-square)](https://codecov.io/gh/jhildenbiddle/create-elms)
 [![Codacy grade](https://img.shields.io/codacy/grade/85a81097fa574bc3b011e30d76ed02ab.svg?style=flat-square)](https://www.codacy.com/app/jhildenbiddle/create-elms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jhildenbiddle/create-elms&amp;utm_campaign=Badge_Grade)
@@ -102,8 +103,8 @@ let elm, elms;
 
 // Set attributes on specific elements...
 elm = createElms({
-  tag : 'p', 
-  text: 'Foo', 
+  tag : 'p',
+  text: 'Foo',
   attr: { id: 'foo', class: 'myclass' }
 });
 
@@ -152,13 +153,13 @@ elm = createElms({ tag: 'p', appendTo: document.querySelectorAll('div') });
 elm = createElms({
   tag     : 'p',
   appendTo: [
-    'body', 
+    'body',
     document.querySelectorAll('div')
   ]
 });
 
 // Specify multiple append/prepend/insert points per element
-elms = createElms({ 
+elms = createElms({
   tag         : 'p',
   appendTo    : 'body',
   prependTo   : document.body,
@@ -170,7 +171,7 @@ elms = createElms({
 elms = createElms(
   // elementData
   [
-    '<p>Text1</p>', 
+    '<p>Text1</p>',
     '<p>Text2</p>'
   ],
   // shadedOptions

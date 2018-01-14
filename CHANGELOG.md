@@ -4,7 +4,7 @@
 
 **Added**
 
-- Initial release
+- Initial release.
 
 ## 1.0.1 - 2018-01-14
 
@@ -20,5 +20,11 @@
 
 - Added version scripts to ensure 'npm version' artifacts are committed with
   bumped package.json and package-lock.json files. Specifically, this ensures
-  that dist files have the appropriate version number added to the comments
-  before pushing or publishing to NPM.
+  that dist files have the appropriate version number added to the info comment
+  before committing the version bump or publishing to NPM.
+
+## 1.0.3 - 2018-01-14
+
+**Added**
+
+- Added NPM badge to README.md
