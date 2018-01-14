@@ -1,6 +1,6 @@
 /*!
  * create-elms
- * v1.0.2
+ * v1.0.3
  * https://github.com/jhildenbiddle/create-elms
  * (c) 2018 John Hildenbiddle <http://hildenbiddle.com>
  * MIT license
