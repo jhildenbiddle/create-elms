@@ -5,69 +5,179 @@
  * (c) 2018 John Hildenbiddle <http://hildenbiddle.com>
  * MIT license
  */
-var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
-    return typeof e;
-} : function(e) {
-    return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-}, toConsumableArray = function(e) {
-    if (Array.isArray(e)) {
-        for (var t = 0, r = Array(e.length); t < e.length; t++) r[t] = e[t];
-        return r;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
+    return typeof obj;
+} : function(obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var toConsumableArray = function(arr) {
+    if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+        return arr2;
+    } else {
+        return Array.from(arr);
     }
-    return Array.from(e);
 };
 
 function mergeDeep() {
-    for (var e = function(e) {
-        return e && "object" === (void 0 === e ? "undefined" : _typeof(e));
-    }, t = arguments.length, r = Array(t), n = 0; n < t; n++) r[n] = arguments[n];
-    return r.reduce(function(t, r) {
-        return Object.keys(r).forEach(function(n) {
-            var o = t[n], a = r[n];
-            e(o) && e(a) ? t[n] = mergeDeep(o, a) : t[n] = a;
-        }), t;
+    var isObject = function isObject(obj) {
+        return obj && (typeof obj === "undefined" ? "undefined" : _typeof(obj)) === "object";
+    };
+    for (var _len = arguments.length, objects = Array(_len), _key = 0; _key < _len; _key++) {
+        objects[_key] = arguments[_key];
+    }
+    return objects.reduce(function(prev, obj) {
+        Object.keys(obj).forEach(function(key) {
+            var pVal = prev[key];
+            var oVal = obj[key];
+            if (isObject(pVal) && isObject(oVal)) {
+                prev[key] = mergeDeep(pVal, oVal);
+            } else {
+                prev[key] = oVal;
+            }
+        });
+        return prev;
     }, {});
 }
 
-function createElms(e) {
-    var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : window.document, n = [];
-    function o(e) {
-        var t = [];
-        if (e.nodeType) t = [ e ]; else if ("string" == typeof e) t = [].concat(toConsumableArray(r.querySelectorAll(e))); else if (Array.isArray(e)) {
-            var n;
-            t = e.map(function(e) {
-                return o(e);
-            }), t = (n = Array.prototype).concat.apply(n, toConsumableArray(t));
-        } else e.length && (t = [].concat(toConsumableArray(e)));
-        return t;
-    }
-    return (Array.isArray(e) ? e : [ e ]).forEach(function(e) {
-        var a = r.createElement("div"), f = e && "string" == typeof e, i = f ? t : mergeDeep(t, e);
-        if (f) a.innerHTML = e; else if (i.tag) {
-            var c = r.createElement(i.tag);
-            a.appendChild(c);
+/**
+ * Creates new elements and optionally adds them to the DOM.
+ *
+ * @preserve
+ * @param {string|createElmsOptions} elmData - Data used to render and/or return
+ * array of elements. Accepts a string, object, and an array of strings or
+ * objects.
+ * @param {createElmsOptions} [sharedOptions={}] - Shared options object. The
+ * 'attr', 'html' and 'text' options will be shared with all elmData objects and
+ * strings but will not override existing attributes or html/text content. Note
+ * that for elmData strings the 'tag' option is ignored and all other shared
+ * options will be applied to top-level elements only (not nested elements).
+ * @example
+ *
+ *   // Single element as HTML string
+ *   createElms('<p class="myclass">Text</p>');
+ *
+ *   // Single element as object
+ *   createElms({
+ *     tag : 'p',
+ *     attr: { class: 'myclass' },
+ *     text: 'Text'
+ *   });
+ *
+ * @example
+ *
+ *   // Multiple elements as HTML string
+ *   createElms(`
+ *     <p class="myclass">Text1</p>
+ *     <p class="myclass"><a href="page.html">Link</a></p>
+ *   `);
+ *
+ *   // Multiple elements as array of HTML string
+ *   createElms([
+ *     '<p class="myclass">Text</p>',
+ *     '<p class="myclass"><a href="page.html">Link</a></p>'
+ *   ]);
+ *
+ *   // Multiple elements as array of objects
+ *   createElms([
+ *     {
+ *       tag : 'p',
+ *       attr: { class: 'myclass' },
+ *       text: 'Text'
+ *     },
+ *     {
+ *       tag : 'p',
+ *       attr: { class: 'myclass' },
+ *       html: '<a href="page.html">Link</a>'
+ *     }
+ *   ]);
+ *
+ * @example
+ *
+ *   // Multiple elements as array of objects with shared options
+ *   createElms([
+ *     { text: 'Text' }
+ *     { html: '<a href="page.html">Link</a>' }
+ *   ], {
+ *     tag     : 'p',
+ *     attr    : { class: 'myclass' },
+ *     appendTo: 'body'
+ *   });
+ */ function createElms(elmData) {
+    var sharedOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var document = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window.document;
+    var elmArray = [];
+    var dataArray = Array.isArray(elmData) ? elmData : [ elmData ];
+    function getElms(elms) {
+        var elmArray = [];
+        if (elms.nodeType) {
+            elmArray = [ elms ];
+        } else if (typeof elms === "string") {
+            elmArray = [].concat(toConsumableArray(document.querySelectorAll(elms)));
+        } else if (Array.isArray(elms)) {
+            var _Array$prototype;
+            elmArray = elms.map(function(elm) {
+                return getElms(elm);
+            });
+            elmArray = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, toConsumableArray(elmArray));
+        } else if (elms.length) {
+            elmArray = [].concat(toConsumableArray(elms));
         }
-        [].concat(toConsumableArray(a.children)).forEach(function(e) {
-            !(e.textContent.length || e.children.length) && (i.html ? e.innerHTML = i.html : i.text && (e.textContent = i.text)), 
-            i.attr && Object.keys(i.attr).forEach(function(t) {
-                e.setAttribute(t, i.attr[t]);
-            }), i.appendTo ? o(i.appendTo).forEach(function(t, r, o) {
-                var a = o.length > 1 ? e.cloneNode(!0) : e;
-                n.push(t.appendChild(a));
-            }) : i.prependTo ? o(i.prependTo).forEach(function(t, r, o) {
-                var a = o.length > 1 ? e.cloneNode(!0) : e;
-                n.push(t.insertBefore(a, t.firstChild));
-            }) : i.insertBefore ? o(i.insertBefore).forEach(function(t, r, o) {
-                var a = o.length > 1 ? e.cloneNode(!0) : e;
-                n.push(t.parentNode.insertBefore(a, t));
-            }) : i.insertAfter ? o(i.insertAfter).forEach(function(t, r, o) {
-                var a = o.length > 1 ? e.cloneNode(!0) : e;
-                n.push(t.parentNode.insertBefore(a, t.nextSibling));
-            }) : n.push(e);
+        return elmArray;
+    }
+    dataArray.forEach(function(data) {
+        var fragment = document.createElement("div");
+        var isString = data && typeof data === "string";
+        var settings = isString ? sharedOptions : mergeDeep(sharedOptions, data);
+        if (isString) {
+            fragment.innerHTML = data;
+        } else if (settings.tag) {
+            var elm = document.createElement(settings.tag);
+            fragment.appendChild(elm);
+        }
+        [].concat(toConsumableArray(fragment.children)).forEach(function(elm) {
+            var isEmpty = !(elm.textContent.length || elm.children.length);
+            if (isEmpty) {
+                if (settings.html) {
+                    elm.innerHTML = settings.html;
+                } else if (settings.text) {
+                    elm.textContent = settings.text;
+                }
+            }
+            if (settings.attr) {
+                Object.keys(settings.attr).forEach(function(key) {
+                    elm.setAttribute(key, settings.attr[key]);
+                });
+            }
+            if (settings.appendTo) {
+                getElms(settings.appendTo).forEach(function(toElm, i, arr) {
+                    var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
+                    elmArray.push(toElm.appendChild(addElm));
+                });
+            } else if (settings.prependTo) {
+                getElms(settings.prependTo).forEach(function(toElm, i, arr) {
+                    var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
+                    elmArray.push(toElm.insertBefore(addElm, toElm.firstChild));
+                });
+            } else if (settings.insertBefore) {
+                getElms(settings.insertBefore).forEach(function(beforeNode, i, arr) {
+                    var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
+                    elmArray.push(beforeNode.parentNode.insertBefore(addElm, beforeNode));
+                });
+            } else if (settings.insertAfter) {
+                getElms(settings.insertAfter).forEach(function(afterNode, i, arr) {
+                    var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
+                    elmArray.push(afterNode.parentNode.insertBefore(addElm, afterNode.nextSibling));
+                });
+            } else {
+                elmArray.push(elm);
+            }
         });
-    }), t.returnHtml ? n.map(function(e) {
-        return e.outerHTML;
-    }) : n;
+    });
+    return sharedOptions.returnHtml ? elmArray.map(function(elm) {
+        return elm.outerHTML;
+    }) : elmArray;
 }
 
 export default createElms;

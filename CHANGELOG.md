@@ -28,3 +28,10 @@
 **Added**
 
 - Added NPM badge to README.md
+
+## 1.0.4 - 2018-01-17
+
+**Fixed**
+
+- Unminified /dist files now include JSDOC comments from /src. This allows
+  documentation to be displayed in IDEs.

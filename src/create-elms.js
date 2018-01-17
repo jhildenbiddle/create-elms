@@ -8,6 +8,7 @@ import mergeDeep from './merge-deep';
 /**
  * Creates new elements and optionally adds them to the DOM.
  *
+ * @preserve
  * @param {string|createElmsOptions} elmData - Data used to render and/or return
  * array of elements. Accepts a string, object, and an array of strings or
  * objects.
