@@ -6,7 +6,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/jhildenbiddle/create-elms.svg?style=flat-square)](https://codecov.io/gh/jhildenbiddle/create-elms)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
 
-A small (~1kb min+gzip), dependency-free micro-library for creating HTML elements.
+A micro-library for efficiently creating HTML elements, settings attributes, adding to other elements, and returning an array of elements or HTML markup.
 
 ## Features
 
@@ -16,6 +16,7 @@ A small (~1kb min+gzip), dependency-free micro-library for creating HTML element
 - UMD and ES6 module available
 - Compatible with modern and legacy browsers (IE9+)
 - Compatible with Node environments using [jsdom](https://github.com/tmpvar/jsdom)
+- Lightweight (~1k min+gzip) and dependency-free
 
 ## Installation
 
@@ -31,7 +32,7 @@ Git:
 git clone https://github.com/jhildenbiddle/create-elms.git
 ```
 
-CDN ([unpkg.com](https://unpkg.com/)):
+CDN ([unpkg.com](https://unpkg.com/) shown, also on [jsdelivr.net](https://www.jsdelivr.com/)):
 
 ```html
 <!-- ES5 in file.html (latest v1.x.x) -->
@@ -222,10 +223,10 @@ createElements(elementData, sharedOptions = {}, documentObject = window.document
 
 **Objects**
 
-* The `html` value will be inserted as HTML content
-* The `text` value will be inserted as text content. This value is ignored if `html` is defined.
-* The `attr` value should contain attribute name/value pairs
-* The `appendTo`, `prependTo`, `insertBefore` and `insertAfter` properties accept a CSS selector, HTMLElement, HTMLCollection, Node, NodeList, or an `Array` of these `Object` types.
+- The `html` value will be inserted as HTML content
+- The `text` value will be inserted as text content. This value is ignored if `html` is defined.
+- The `attr` value should contain attribute name/value pairs
+- The `appendTo`, `prependTo`, `insertBefore` and `insertAfter` properties accept a CSS selector, HTMLElement, HTMLCollection, Node, NodeList, or an `Array` of these `Object` types.
 
 | Property     | Type           | Description                             |
 | ------------ | -------------- | --------------------------------------- |
@@ -299,8 +300,8 @@ let html = createElms(
 
 ### documentObject
 
-* Type: `Object`
-* Default: `window.document`
+- Type: `Object`
+- Default: `window.document`
 
 This is the document object on which `document.createElement` and `document.querySelectorAll` methods will be called. The default value assumes a browser environment, but passing a reference to a document object created by tools like [jsdom](https://github.com/tmpvar/jsdom) allows creating HTML elements and markup in a Node environment (without polluting global variables).
 
@@ -319,6 +320,11 @@ let html = createElms({ tag: 'p', { returnHtml: true }, dom.window.document)
 // => '<p></p>'
 ```
 
+## Contact
+
+- Create a [Github issue](https://github.com/jhildenbiddle/create-elms/issues) for bug reports, feature requests, or questions
+- Follow [@jhildenbiddle](https://twitter.com/jhildenbiddle) for announcements
+
 ## License
 
-[MIT License](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE) for details.
