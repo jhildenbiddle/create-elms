@@ -1,45 +1,53 @@
 # Change Log
 
-## 1.0.5 - 2018-01-31
+## 1.0.6
 
-**Updated**
+*2018-04-21*
 
-- Dev dependencies
-- Rollup configuration
-- README
+- Updated dependencies
+- Updated rollup configuration
+- Updated README
 
-## 1.0.4 - 2018-01-17
+## 1.0.5
 
-**Fixed**
+*2018-01-31*
+
+- Updated dependencies
+- Updated rollup configuration
+- Updated README
+
+## 1.0.4
+
+*2018-01-17*
 
 - Unminified /dist files now include JSDOC comments from /src. This allows
   documentation to be displayed in IDEs.
 
-## 1.0.3 - 2018-01-14
+## 1.0.3
 
-**Added**
+*2018-01-14*
 
 - Added NPM badge to README.md
 
-## 1.0.2 - 2018-01-14
+## 1.0.2
 
-**Added**
+*2018-01-14*
 
 - Added version scripts to ensure 'npm version' artifacts are committed with
   bumped package.json and package-lock.json files. Specifically, this ensures
   that dist files have the appropriate version number added to the info comment
   before committing the version bump or publishing to NPM.
 
-## 1.0.1 - 2018-01-14
+## 1.0.1
 
-**Added**
+*2018-01-14*
 
-- Allow handling strings, HTMLCollections, and NodeLists as part of arrays
-  passed to appendTo, prependTo, insertBefore and insertAfter. Previously
-  only able to process arrays of nodes.
+- Added ability pass strings, HTMLCollections, and NodeLists to `appendTo`,
+  `prependTo`, `insertBefore` and `insertAfter`. Previously only able to process
+  arrays of nodes.
 
-## 1.0.0 - 2018-01-13
+## 1.0.0
 
-**Added**
+*2018-01-13*
 
-- Initial release.
+- Initial release
