@@ -1,6 +1,6 @@
 /*!
  * create-elms
- * v1.0.5
+ * v1.0.6
  * https://github.com/jhildenbiddle/create-elms
  * (c) 2018 John Hildenbiddle <http://hildenbiddle.com>
  * MIT license
@@ -43,69 +43,69 @@
         }, {});
     }
     /**
- * Creates new elements and optionally adds them to the DOM.
- *
- * @preserve
- * @param {string|createElmsOptions} elmData - Data used to render and/or return
- * array of elements. Accepts a string, object, and an array of strings or
- * objects.
- * @param {createElmsOptions} [sharedOptions={}] - Shared options object. The
- * 'attr', 'html' and 'text' options will be shared with all elmData objects and
- * strings but will not override existing attributes or html/text content. Note
- * that for elmData strings the 'tag' option is ignored and all other shared
- * options will be applied to top-level elements only (not nested elements).
- * @example
- *
- *   // Single element as HTML string
- *   createElms('<p class="myclass">Text</p>');
- *
- *   // Single element as object
- *   createElms({
- *     tag : 'p',
- *     attr: { class: 'myclass' },
- *     text: 'Text'
- *   });
- *
- * @example
- *
- *   // Multiple elements as HTML string
- *   createElms(`
- *     <p class="myclass">Text1</p>
- *     <p class="myclass"><a href="page.html">Link</a></p>
- *   `);
- *
- *   // Multiple elements as array of HTML string
- *   createElms([
- *     '<p class="myclass">Text</p>',
- *     '<p class="myclass"><a href="page.html">Link</a></p>'
- *   ]);
- *
- *   // Multiple elements as array of objects
- *   createElms([
- *     {
- *       tag : 'p',
- *       attr: { class: 'myclass' },
- *       text: 'Text'
- *     },
- *     {
- *       tag : 'p',
- *       attr: { class: 'myclass' },
- *       html: '<a href="page.html">Link</a>'
- *     }
- *   ]);
- *
- * @example
- *
- *   // Multiple elements as array of objects with shared options
- *   createElms([
- *     { text: 'Text' }
- *     { html: '<a href="page.html">Link</a>' }
- *   ], {
- *     tag     : 'p',
- *     attr    : { class: 'myclass' },
- *     appendTo: 'body'
- *   });
- */    function createElms(elmData) {
+   * Creates new elements and optionally adds them to the DOM.
+   *
+   * @preserve
+   * @param {string|createElmsOptions} elmData - Data used to render and/or return
+   * array of elements. Accepts a string, object, and an array of strings or
+   * objects.
+   * @param {createElmsOptions} [sharedOptions={}] - Shared options object. The
+   * 'attr', 'html' and 'text' options will be shared with all elmData objects and
+   * strings but will not override existing attributes or html/text content. Note
+   * that for elmData strings the 'tag' option is ignored and all other shared
+   * options will be applied to top-level elements only (not nested elements).
+   * @example
+   *
+   *   // Single element as HTML string
+   *   createElms('<p class="myclass">Text</p>');
+   *
+   *   // Single element as object
+   *   createElms({
+   *     tag : 'p',
+   *     attr: { class: 'myclass' },
+   *     text: 'Text'
+   *   });
+   *
+   * @example
+   *
+   *   // Multiple elements as HTML string
+   *   createElms(`
+   *     <p class="myclass">Text1</p>
+   *     <p class="myclass"><a href="page.html">Link</a></p>
+   *   `);
+   *
+   *   // Multiple elements as array of HTML string
+   *   createElms([
+   *     '<p class="myclass">Text</p>',
+   *     '<p class="myclass"><a href="page.html">Link</a></p>'
+   *   ]);
+   *
+   *   // Multiple elements as array of objects
+   *   createElms([
+   *     {
+   *       tag : 'p',
+   *       attr: { class: 'myclass' },
+   *       text: 'Text'
+   *     },
+   *     {
+   *       tag : 'p',
+   *       attr: { class: 'myclass' },
+   *       html: '<a href="page.html">Link</a>'
+   *     }
+   *   ]);
+   *
+   * @example
+   *
+   *   // Multiple elements as array of objects with shared options
+   *   createElms([
+   *     { text: 'Text' }
+   *     { html: '<a href="page.html">Link</a>' }
+   *   ], {
+   *     tag     : 'p',
+   *     attr    : { class: 'myclass' },
+   *     appendTo: 'body'
+   *   });
+   */    function createElms(elmData) {
         var sharedOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         var document = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window.document;
         var elmArray = [];
