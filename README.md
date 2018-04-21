@@ -24,7 +24,6 @@ A micro-library for efficiently creating HTML elements, settings attributes, add
 NPM:
 
 ```bash
-# CLI
 npm install create-elms
 ```
 
@@ -37,7 +36,6 @@ const elms = createElms(/* ... */);
 Git:
 
 ```bash
-# CLI
 git clone https://github.com/jhildenbiddle/create-elms.git
 ```
 
