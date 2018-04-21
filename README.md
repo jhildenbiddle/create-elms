@@ -5,6 +5,7 @@
 [![Codacy grade](https://img.shields.io/codacy/grade/85a81097fa574bc3b011e30d76ed02ab.svg?style=flat-square)](https://www.codacy.com/app/jhildenbiddle/create-elms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jhildenbiddle/create-elms&amp;utm_campaign=Badge_Grade)
 [![Codecov](https://img.shields.io/codecov/c/github/jhildenbiddle/create-elms.svg?style=flat-square)](https://codecov.io/gh/jhildenbiddle/create-elms)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20micro-library%20for%20efficiently%20creating%20HTML%20elements%2C%20settings%20attributes%2C%20adding%20to%20other%20elements%2C%20and%20returning%20an%20array%20of%20elements%20or%20HTML%20markup&url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript)
 
 A micro-library for efficiently creating HTML elements, settings attributes, adding to other elements, and returning an array of elements or HTML markup.
 
@@ -22,13 +23,21 @@ A micro-library for efficiently creating HTML elements, settings attributes, add
 
 NPM:
 
-```shell
+```bash
+# CLI
 npm install create-elms
+```
+
+```javascript
+// file.js
+import createElms from 'create-elms';
+const elms = createElms(/* ... */);
 ```
 
 Git:
 
-```shell
+```bash
+# CLI
 git clone https://github.com/jhildenbiddle/create-elms.git
 ```
 
@@ -38,22 +47,16 @@ CDN ([unpkg.com](https://unpkg.com/) shown, also on [jsdelivr.net](https://www.j
 <!-- ES5 in file.html (latest v1.x.x) -->
 <script src="https://unpkg.com/create-elms@1"></script>
 <script>
-  var elms = createElms(...);
+  var elms = createElms(/* ... */);
 </script>
 ```
 
 ```html
 <!-- ES6 module in file.html (latest v1.x.x) -->
 <script type="module">
-  import createElms from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
-  const elms = createElms(...);
+  import getCssData from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
+  const elms = createElms(/* ... */);
 </script>
-```
-
-```javascript
-// ES6 module in file.js (latest v1.x.x)
-import createElms from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
-const elms = createElms(...);
 ```
 
 ## Examples
@@ -324,7 +327,10 @@ let html = createElms({ tag: 'p', { returnHtml: true }, dom.window.document)
 
 - Create a [Github issue](https://github.com/jhildenbiddle/create-elms/issues) for bug reports, feature requests, or questions
 - Follow [@jhildenbiddle](https://twitter.com/jhildenbiddle) for announcements
+- Add a [star on GitHub](https://github.com/jhildenbiddle/create-elms) or [tweet](https://twitter.com/intent/tweet?text=A%20micro-library%20for%20efficiently%20creating%20HTML%20elements%2C%20settings%20attributes%2C%20adding%20to%20other%20elements%2C%20and%20returning%20an%20array%20of%20elements%20or%20HTML%20markup&url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript) to support the project!
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE) for details.
+
+Copyright (c) 2018 John Hildenbiddle ([@jhildenbiddle](https://twitter.com/jhildenbiddle))
