@@ -20,7 +20,7 @@ const localConfig = {
         'ChromeHeadless'
     ],
     files: [
-        'node_modules/babel-polyfill/dist/polyfill.js',
+        'node_modules/@babel/polyfill/dist/polyfill.js',
         files.test,
     ],
     preprocessors: {
