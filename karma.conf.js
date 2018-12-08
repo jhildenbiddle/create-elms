@@ -126,8 +126,8 @@ const remoteConfig = Object.assign({}, localConfig, {
         sl_safari: {
             base       : 'SauceLabs',
             browserName: 'Safari',
-            platform   : 'OS X 10.9',
-            version    : '7.0'
+            platform   : 'OS X 10.10',
+            version    : '8.0'
         }
     },
     // Set browsers to customLaunchers
