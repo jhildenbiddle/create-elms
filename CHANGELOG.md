@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.7
+
+*2018-12-07*
+
+- Update dependencies
+- Fix rollup plugin configuration
+
 ## 1.0.6
 
 *2018-04-21*
