@@ -100,9 +100,9 @@ const esm = merge({}, config, {
         file  : config.output.file.replace(/\.js$/, '.esm.js'),
         format: 'es'
     },
-    plugins: [
+    plugins: config.plugins.concat([
         uglify(pluginSettings.uglify.beautify)
-    ]
+    ])
 });
 
 // ES Module (Minified)
@@ -111,9 +111,9 @@ const esmMinified = merge({}, config, {
         file  : esm.output.file.replace(/\.js$/, '.min.js'),
         format: esm.output.format
     },
-    plugins: [
+    plugins: config.plugins.concat([
         uglify(pluginSettings.uglify.minify)
-    ]
+    ])
 });
 
 // UMD
@@ -121,9 +121,9 @@ const umd = merge({}, config, {
     output: {
         format: 'umd'
     },
-    plugins: [
+    plugins: config.plugins.concat([
         uglify(pluginSettings.uglify.beautify)
-    ]
+    ])
 });
 
 // UMD (Minified)
@@ -132,9 +132,9 @@ const umdMinified = merge({}, config, {
         file  : umd.output.file.replace(/\.js$/, '.min.js'),
         format: umd.output.format
     },
-    plugins: [
+    plugins: config.plugins.concat([
         uglify(pluginSettings.uglify.minify)
-    ]
+    ])
 });
 
 
