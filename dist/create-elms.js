@@ -9,24 +9,38 @@
     typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global.createElms = factory();
 })(this, function() {
     "use strict";
-    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
-        return typeof obj;
-    } : function(obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-    var toConsumableArray = function(arr) {
-        if (Array.isArray(arr)) {
-            for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-            return arr2;
+    function _typeof(obj) {
+        if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+            _typeof = function(obj) {
+                return typeof obj;
+            };
         } else {
-            return Array.from(arr);
+            _typeof = function(obj) {
+                return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+            };
         }
-    };
+        return _typeof(obj);
+    }
+    function _toConsumableArray(arr) {
+        return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    }
+    function _arrayWithoutHoles(arr) {
+        if (Array.isArray(arr)) {
+            for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+            return arr2;
+        }
+    }
+    function _iterableToArray(iter) {
+        if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+    }
+    function _nonIterableSpread() {
+        throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
     function mergeDeep() {
         var isObject = function isObject(obj) {
-            return obj && (typeof obj === "undefined" ? "undefined" : _typeof(obj)) === "object";
+            return obj && _typeof(obj) === "object";
         };
-        for (var _len = arguments.length, objects = Array(_len), _key = 0; _key < _len; _key++) {
+        for (var _len = arguments.length, objects = new Array(_len), _key = 0; _key < _len; _key++) {
             objects[_key] = arguments[_key];
         }
         return objects.reduce(function(prev, obj) {
@@ -115,15 +129,15 @@
             if (elms.nodeType) {
                 elmArray = [ elms ];
             } else if (typeof elms === "string") {
-                elmArray = [].concat(toConsumableArray(document.querySelectorAll(elms)));
+                elmArray = _toConsumableArray(document.querySelectorAll(elms));
             } else if (Array.isArray(elms)) {
                 var _Array$prototype;
                 elmArray = elms.map(function(elm) {
                     return getElms(elm);
                 });
-                elmArray = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, toConsumableArray(elmArray));
+                elmArray = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, _toConsumableArray(elmArray));
             } else if (elms.length) {
-                elmArray = [].concat(toConsumableArray(elms));
+                elmArray = _toConsumableArray(elms);
             }
             return elmArray;
         }
@@ -137,7 +151,7 @@
                 var elm = document.createElement(settings.tag);
                 fragment.appendChild(elm);
             }
-            [].concat(toConsumableArray(fragment.children)).forEach(function(elm) {
+            _toConsumableArray(fragment.children).forEach(function(elm) {
                 var isEmpty = !(elm.textContent.length || elm.children.length);
                 if (isEmpty) {
                     if (settings.html) {
