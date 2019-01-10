@@ -1,6 +1,6 @@
 {
   "name": "create-elms",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A micro-library for efficiently creating HTML elements, settings attributes, adding to other elements, and returning an array of elements or HTML markup",
   "author": "John Hildenbiddle <http://hildenbiddle.com>",
   "license": "MIT",
