@@ -39,20 +39,20 @@ Git:
 git clone https://github.com/jhildenbiddle/create-elms.git
 ```
 
-CDN ([unpkg.com](https://unpkg.com/) shown, also on [jsdelivr.net](https://www.jsdelivr.com/)):
+CDN ([jsdelivr.com](https://www.jsdelivr.com/) shown, also on [unpkg.com](https://unpkg.com/)):
 
 ```html
-<!-- ES5 in file.html (latest v1.x.x) -->
-<script src="https://unpkg.com/create-elms@1"></script>
+<!-- ES5 (latest v1.x.x) -->
+<script src="https://cdn.jsdelivr.net/npm/create-elms@1"></script>
 <script>
   var elms = createElms(/* ... */);
 </script>
 ```
 
 ```html
-<!-- ES6 module in file.html (latest v1.x.x) -->
+<!-- ES6 module (latest v1.x.x) -->
 <script type="module">
-  import getCssData from 'https://unpkg.com/create-elms@1/dist/create-elms.esm.min.js';
+  import getCssData from 'https://cdn.jsdelivr.net/npm/create-elms@1/dist/create-elms.esm.min.js';
   const elms = createElms(/* ... */);
 </script>
 ```
