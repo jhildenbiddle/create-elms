@@ -1,6 +1,6 @@
 {
   "name": "create-elms",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Create HTML elements, set attributes, add to other elements, and return an array of DOM nodes or HTML markup in a single function call",
   "author": "John Hildenbiddle <http://hildenbiddle.com>",
   "license": "MIT",
