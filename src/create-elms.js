@@ -96,7 +96,7 @@ function createElms(elmData, sharedOptions = {}, document = window.document) {
         }
         // CSS selector
         else if (typeof elms === 'string') {
-            elmArray = [...document.querySelectorAll(elms)];
+            elmArray = Array.apply(null, document.querySelectorAll(elms));
         }
         // Array
         else if (Array.isArray(elms)) {
@@ -104,11 +104,11 @@ function createElms(elmData, sharedOptions = {}, document = window.document) {
             elmArray = elms.map(elm => getElms(elm));
 
             // Flatten arrays
-            elmArray = Array.prototype.concat(...elmArray);
+            elmArray = Array.prototype.concat.apply([], elmArray);
         }
         // HTMLCollection or NodeList
         else if (elms.length) {
-            elmArray = [...elms];
+            elmArray = Array.apply(null, elms);
         }
 
         return elmArray;
@@ -130,7 +130,7 @@ function createElms(elmData, sharedOptions = {}, document = window.document) {
         }
 
         // A loop is required to handle data strings with multiple elements
-        [...fragment.children].forEach(elm => {
+        Array.apply(null, fragment.children).forEach(elm => {
             const isEmpty = !(elm.textContent.length || elm.children.length);
 
             // HTML / Text

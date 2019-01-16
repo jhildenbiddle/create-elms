@@ -18,25 +18,6 @@ function _typeof(obj) {
     return _typeof(obj);
 }
 
-function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-        return arr2;
-    }
-}
-
-function _iterableToArray(iter) {
-    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
-
-function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
 function mergeDeep() {
     var isObject = function isObject(obj) {
         return obj && _typeof(obj) === "object";
@@ -131,15 +112,14 @@ function mergeDeep() {
         if (elms.nodeType) {
             elmArray = [ elms ];
         } else if (typeof elms === "string") {
-            elmArray = _toConsumableArray(document.querySelectorAll(elms));
+            elmArray = Array.apply(null, document.querySelectorAll(elms));
         } else if (Array.isArray(elms)) {
-            var _Array$prototype;
             elmArray = elms.map(function(elm) {
                 return getElms(elm);
             });
-            elmArray = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, _toConsumableArray(elmArray));
+            elmArray = Array.prototype.concat.apply([], elmArray);
         } else if (elms.length) {
-            elmArray = _toConsumableArray(elms);
+            elmArray = Array.apply(null, elms);
         }
         return elmArray;
     }
@@ -153,7 +133,7 @@ function mergeDeep() {
             var elm = document.createElement(settings.tag);
             fragment.appendChild(elm);
         }
-        _toConsumableArray(fragment.children).forEach(function(elm) {
+        Array.apply(null, fragment.children).forEach(function(elm) {
             var isEmpty = !(elm.textContent.length || elm.children.length);
             if (isEmpty) {
                 if (settings.html) {

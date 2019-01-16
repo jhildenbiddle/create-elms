@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.9
+
+*2019-01-15*
+
+- Fixed bug that prevented an object with a `length` property passed as
+  `elementData` from being handled properly.
+
 ## 1.0.8
 
 *2019-01-09*
