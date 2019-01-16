@@ -7,7 +7,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20micro-library%20for%20efficiently%20creating%20HTML%20elements%2C%20settings%20attributes%2C%20adding%20to%20other%20elements%2C%20and%20returning%20an%20array%20of%20elements%20or%20HTML%20markup&url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript)
 
-A micro-library for efficiently creating HTML elements, settings attributes, adding to other elements, and returning an array of elements or HTML markup.
+Create HTML elements, set attributes, add to other elements, and return an array of DOM nodes or HTML markup in a single function call.
+
+------
+
+- [Features](#features)
+- [Installation](#installation)
+- [Examples](#examples)
+- [Usage](#usage)
+- [Contact](#contact)
+- [License](#license)
+
+------
 
 ## Features
 
