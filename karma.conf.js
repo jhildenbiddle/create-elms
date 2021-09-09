@@ -21,7 +21,7 @@ const settings = {
     preprocessors: {
         [files.test]: ['eslint', 'webpack', 'sourcemap']
     },
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'webpack'],
     reporters : ['mocha', 'coverage-istanbul'],
     webpack: {
         mode  : 'development',
@@ -34,16 +34,7 @@ const settings = {
                         {
                             loader : 'babel-loader',
                             options: {
-                                presets: [
-                                    [
-                                        '@babel/env',
-                                        {
-                                            targets: {
-                                                browsers: ['ie >= 9']
-                                            }
-                                        }
-                                    ]
-                                ],
+                                // See .babelrc
                                 plugins: [
                                     ['istanbul', { exclude: 'tests/*' }]
                                 ]

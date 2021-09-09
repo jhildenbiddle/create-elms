@@ -2,15 +2,16 @@
  * create-elms
  * v1.0.9
  * https://github.com/jhildenbiddle/create-elms
- * (c) 2018-2019 John Hildenbiddle <http://hildenbiddle.com>
+ * (c) 2018-2021 John Hildenbiddle <http://hildenbiddle.com>
  * MIT license
  */
 (function(global, factory) {
-    typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, 
+    typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, 
     global.createElms = factory());
-})(this, function() {
+})(this, (function() {
     "use strict";
     function _typeof(obj) {
+        "@babel/helpers - typeof";
         if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
             _typeof = function(obj) {
                 return typeof obj;
@@ -29,8 +30,8 @@
         for (var _len = arguments.length, objects = new Array(_len), _key = 0; _key < _len; _key++) {
             objects[_key] = arguments[_key];
         }
-        return objects.reduce(function(prev, obj) {
-            Object.keys(obj).forEach(function(key) {
+        return objects.reduce((function(prev, obj) {
+            Object.keys(obj).forEach((function(key) {
                 var pVal = prev[key];
                 var oVal = obj[key];
                 if (isObject(pVal) && isObject(oVal)) {
@@ -38,9 +39,9 @@
                 } else {
                     prev[key] = oVal;
                 }
-            });
+            }));
             return prev;
-        }, {});
+        }), {});
     }
     /**
    * Creates new elements and optionally adds them to the DOM.
@@ -117,16 +118,16 @@
             } else if (typeof elms === "string") {
                 elmArray = Array.apply(null, document.querySelectorAll(elms));
             } else if (Array.isArray(elms)) {
-                elmArray = elms.map(function(elm) {
+                elmArray = elms.map((function(elm) {
                     return getElms(elm);
-                });
+                }));
                 elmArray = Array.prototype.concat.apply([], elmArray);
             } else if (elms.length) {
                 elmArray = Array.apply(null, elms);
             }
             return elmArray;
         }
-        dataArray.forEach(function(data) {
+        dataArray.forEach((function(data) {
             var fragment = document.createElement("div");
             var isString = data && typeof data === "string";
             var settings = isString ? sharedOptions : mergeDeep(sharedOptions, data);
@@ -136,7 +137,7 @@
                 var elm = document.createElement(settings.tag);
                 fragment.appendChild(elm);
             }
-            Array.apply(null, fragment.children).forEach(function(elm) {
+            Array.apply(null, fragment.children).forEach((function(elm) {
                 var isEmpty = !(elm.textContent.length || elm.children.length);
                 if (isEmpty) {
                     if (settings.html) {
@@ -146,39 +147,39 @@
                     }
                 }
                 if (settings.attr) {
-                    Object.keys(settings.attr).forEach(function(key) {
+                    Object.keys(settings.attr).forEach((function(key) {
                         elm.setAttribute(key, settings.attr[key]);
-                    });
+                    }));
                 }
                 if (settings.appendTo) {
-                    getElms(settings.appendTo).forEach(function(toElm, i, arr) {
+                    getElms(settings.appendTo).forEach((function(toElm, i, arr) {
                         var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
                         elmArray.push(toElm.appendChild(addElm));
-                    });
+                    }));
                 } else if (settings.prependTo) {
-                    getElms(settings.prependTo).forEach(function(toElm, i, arr) {
+                    getElms(settings.prependTo).forEach((function(toElm, i, arr) {
                         var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
                         elmArray.push(toElm.insertBefore(addElm, toElm.firstChild));
-                    });
+                    }));
                 } else if (settings.insertBefore) {
-                    getElms(settings.insertBefore).forEach(function(beforeNode, i, arr) {
+                    getElms(settings.insertBefore).forEach((function(beforeNode, i, arr) {
                         var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
                         elmArray.push(beforeNode.parentNode.insertBefore(addElm, beforeNode));
-                    });
+                    }));
                 } else if (settings.insertAfter) {
-                    getElms(settings.insertAfter).forEach(function(afterNode, i, arr) {
+                    getElms(settings.insertAfter).forEach((function(afterNode, i, arr) {
                         var addElm = arr.length > 1 ? elm.cloneNode(true) : elm;
                         elmArray.push(afterNode.parentNode.insertBefore(addElm, afterNode.nextSibling));
-                    });
+                    }));
                 } else {
                     elmArray.push(elm);
                 }
-            });
-        });
-        return sharedOptions.returnHtml ? elmArray.map(function(elm) {
+            }));
+        }));
+        return sharedOptions.returnHtml ? elmArray.map((function(elm) {
             return elm.outerHTML;
-        }) : elmArray;
+        })) : elmArray;
     }
     return createElms;
-});
+}));
 //# sourceMappingURL=create-elms.js.map
