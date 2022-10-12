@@ -5,20 +5,10 @@
 [![Codacy code quality](https://img.shields.io/codacy/grade/22ce05a1fe9b406e8426ea0ef61c30b9/master?style=flat-square)](https://app.codacy.com/gh/jhildenbiddle/create-elms/dashboard?branch=master)
 [![Codacy branch coverage](https://img.shields.io/codacy/coverage/22ce05a1fe9b406e8426ea0ef61c30b9/master?style=flat-square)](https://app.codacy.com/gh/jhildenbiddle/create-elms/dashboard?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
+[![Sponsor this project](https://img.shields.io/static/v1?style=flat-square&label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/jhildenbiddle)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20micro-library%20for%20efficiently%20creating%20HTML%20elements%2C%20settings%20attributes%2C%20adding%20to%20other%20elements%2C%20and%20returning%20an%20array%20of%20elements%20or%20HTML%20markup&url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript)
 
 Create HTML elements, set attributes, add to other elements, and return an array of DOM nodes or HTML markup in a single function call.
-
-------
-
-- [Features](#features)
-- [Installation](#installation)
-- [Examples](#examples)
-- [Usage](#usage)
-- [Contact](#contact)
-- [License](#license)
-
-------
 
 ## Features
 
@@ -333,11 +323,20 @@ let html = createElms({ tag: 'p', { returnHtml: true }, dom.window.document)
 // => '<p></p>'
 ```
 
-## Contact
+## Sponsorship
 
-- Create a [Github issue](https://github.com/jhildenbiddle/create-elms/issues) for bug reports, feature requests, or questions
-- Follow [@jhildenbiddle](https://twitter.com/jhildenbiddle) for announcements
-- Add a ⭐️ [star on GitHub](https://github.com/jhildenbiddle/create-elms) or ❤️ [tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript) to support the project!
+A [sponsorship](https://github.com/sponsors/jhildenbiddle) is more than just a way to show appreciation for the open-source authors and projects we rely on; it can be the spark that ignites the next big idea, the inspiration to create something new, and the motivation to share so that others may benefit.
+
+If you benefit from this project, please consider lending your support and encouraging future efforts by [becoming a sponsor](https://github.com/sponsors/jhildenbiddle).
+
+Thank you! 🙏🏻
+
+## Contact & Support
+
+- Follow 👨🏻‍💻 **@jhildenbiddle** on [Twitter](https://twitter.com/jhildenbiddle) and [GitHub](https://github.com/jhildenbiddle) for announcements
+- Create a 💬 [GitHub issue](https://github.com/jhildenbiddle/create-elms/issues) for bug reports, feature requests, or questions
+- Add a ⭐️ [star on GitHub](https://github.com/jhildenbiddle/create-elms) and 🐦 [tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript) to promote the project
+- Become a 💖 [sponsor](https://github.com/sponsors/jhildenbiddle) to support the project and future efforts
 
 ## License
 
