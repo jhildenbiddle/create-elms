@@ -6,7 +6,6 @@
 [![Codacy branch coverage](https://img.shields.io/codacy/coverage/22ce05a1fe9b406e8426ea0ef61c30b9/master?style=flat-square)](https://app.codacy.com/gh/jhildenbiddle/create-elms/dashboard?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
 [![Sponsor this project](https://img.shields.io/static/v1?style=flat-square&label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/jhildenbiddle)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20micro-library%20for%20efficiently%20creating%20HTML%20elements%2C%20settings%20attributes%2C%20adding%20to%20other%20elements%2C%20and%20returning%20an%20array%20of%20elements%20or%20HTML%20markup&url=https%3A%2F%2Fgithub.com%2Fjhildenbiddle%2Fcreate-elms&hashtags=css,developers,frontend,javascript)
 
 Create HTML elements, set attributes, add to other elements, and return an array of DOM nodes or HTML markup in a single function call.
 
