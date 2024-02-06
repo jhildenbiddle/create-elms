@@ -1,7 +1,7 @@
 # create-elms <!-- omit in toc -->
 
 [![NPM](https://img.shields.io/npm/v/create-elms.svg?style=flat-square)](https://www.npmjs.com/package/create-elms)
-[![GitHub Workflow Status (master)](https://img.shields.io/github/workflow/status/jhildenbiddle/create-elms/Build%20&%20Test/master?label=checks&style=flat-square)](https://github.com/jhildenbiddle/create-elms/actions?query=branch%3Amaster+)
+[![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/jhildenbiddle/create-elms/test.yml?branch=master&label=checks&style=flat-square)](https://github.com/jhildenbiddle/create-elms/actions?query=branch%3Amain+)
 [![Codacy code quality](https://img.shields.io/codacy/grade/22ce05a1fe9b406e8426ea0ef61c30b9/master?style=flat-square)](https://app.codacy.com/gh/jhildenbiddle/create-elms/dashboard?branch=master)
 [![Codacy branch coverage](https://img.shields.io/codacy/coverage/22ce05a1fe9b406e8426ea0ef61c30b9/master?style=flat-square)](https://app.codacy.com/gh/jhildenbiddle/create-elms/dashboard?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/jhildenbiddle/create-elms/blob/master/LICENSE)
