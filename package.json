@@ -44,7 +44,7 @@
     "test": "npm run lint && mocha ./tests/server.test.js && karma start",
     "test-remote": "npm run test -- --remote",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "version": "npm run build && npm test && git add -A dist"
+    "version": "npm run build && npm test"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
