@@ -30,6 +30,9 @@
   "browserslist": [
     "ie >= 9"
   ],
+  "files": [
+    "dist"
+  ],
   "main": "dist/create-elms.js",
   "module": "dist/create-elms.esm.js",
   "unpkg": "dist/create-elms.min.js",
